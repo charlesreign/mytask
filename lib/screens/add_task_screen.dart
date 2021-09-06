@@ -8,7 +8,7 @@ class AddTaskScreen extends StatelessWidget {
     return Container(
       color: Color(0xff757575),
       child: Container(
-        padding: EdgeInsets.all(30.0),
+        padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -32,15 +32,17 @@ class AddTaskScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(
-              height: 20.0,
+              height: 7.0,
             ),
-            ElevatedButton(
-              onPressed: () {
-                //TODO: Add functionality
-              },
-              child: Text('Add'),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.all(20.0)
+            Flexible(
+              child: ElevatedButton(
+                onPressed: () {
+                  //TODO: Add functionality
+                },
+                child: Text('Add'),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(20.0)
+                ),
               ),
             )
           ],
