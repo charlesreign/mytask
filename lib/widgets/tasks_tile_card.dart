@@ -4,13 +4,15 @@ class ListsTileCard extends StatelessWidget {
   final bool isChecked;
   final String listTitle;
   final Function checkBoxCallBack;
+  final Function longPressCallBack;
 
-  ListsTileCard({this.listTitle, this.isChecked, this.checkBoxCallBack});
+  ListsTileCard({this.listTitle, this.isChecked, this.checkBoxCallBack, this.longPressCallBack});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        onLongPress: longPressCallBack,
         title: Text(
           listTitle,
           style: TextStyle(

@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mytask/models/task.dart';
 import 'package:mytask/screens/add_task_screen.dart';
 import '../widgets/tasks_list.dart';
+import 'package:provider/provider.dart';
+import 'package:mytask/models/task_data.dart';
 
-class TasksScreen extends StatefulWidget {
-  const TasksScreen({Key key}) : super(key: key);
-
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: 'Learn flutter'),
-    Task(name: 'Lecture student'),
-    Task(name: 'Go to gym'),
-  ];
+class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +37,7 @@ class _TasksScreenState extends State<TasksScreen> {
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  '${tasks.length} tasks',
+                  '${Provider.of<TaskData>(context).tasks.length} tasks',
                   style: TextStyle(color: Color(0xFFE1BEE7), fontSize: 18.0),
                 ),
               ],
@@ -64,7 +53,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: TasksList(tasks),
+              child: TasksList(),
             ),
           )
         ],
@@ -73,12 +62,8 @@ class _TasksScreenState extends State<TasksScreen> {
         onPressed: () {
           showModalBottomSheet(
               context: context,
-              builder: (context) => AddTaskScreen((newtaskTitle) {
-                    setState(() {
-                      tasks.add(Task(name: newtaskTitle));
-                    });
-                    Navigator.pop(context);
-                  }));
+              builder: (context) => AddTaskScreen(),
+            );
         },
         backgroundColor: Color(0xFFFFC107),
         child: Icon(Icons.add),
